@@ -163,7 +163,7 @@
     }
   },
   "Resources": {
-    "S3Bucket": {
+    "s3bucketchentst": {
       "Type": "AWS::S3::Bucket",
 
       "DeletionPolicy": "Retain",
@@ -225,7 +225,7 @@
     },
 
     "S3AuthPublicPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "CreateAuthPublic",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -257,7 +257,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/public/*"
                     ]
@@ -270,7 +270,7 @@
       }
     },
     "S3AuthProtectedPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "CreateAuthProtected",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -302,7 +302,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/protected/${cognito-identity.amazonaws.com:sub}/*"
                     ]
@@ -315,7 +315,7 @@
       }
     },
     "S3AuthPrivatePolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "CreateAuthPrivate",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -347,7 +347,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/private/${cognito-identity.amazonaws.com:sub}/*"
                     ]
@@ -360,7 +360,7 @@
       }
     },
     "S3AuthUploadPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "CreateAuthUploads",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -392,7 +392,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/uploads/*"
                     ]
@@ -405,7 +405,7 @@
       }
     },
     "S3AuthReadPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "AuthReadAndList",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -430,7 +430,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/protected/*"
                     ]
@@ -448,7 +448,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       }
                     ]
                   ]
@@ -472,7 +472,7 @@
       }
     },
     "S3GuestPublicPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "CreateGuestPublic",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -504,7 +504,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/public/*"
                     ]
@@ -517,7 +517,7 @@
       }
     },
     "S3GuestUploadPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "CreateGuestUploads",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -549,7 +549,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/uploads/*"
                     ]
@@ -562,7 +562,7 @@
       }
     },
     "S3GuestReadPolicy": {
-      "DependsOn": ["S3Bucket"],
+      "DependsOn": ["s3bucketchentst"],
       "Condition": "GuestReadAndList",
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -587,7 +587,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       },
                       "/protected/*"
                     ]
@@ -605,7 +605,7 @@
                     [
                       "arn:aws:s3:::",
                       {
-                        "Ref": "S3Bucket"
+                        "Ref": "s3bucketchentst"
                       }
                     ]
                   ]
@@ -630,7 +630,7 @@
   "Outputs": {
     "BucketName": {
       "Value": {
-        "Ref": "S3Bucket"
+        "Ref": "s3bucketchentst"
       },
       "Description": "Bucket name for the S3 bucket"
     },
